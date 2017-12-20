@@ -7,18 +7,21 @@ package com.aries.wawafans.Bean;
 public class User {
     private int id;
     private int level;
-    private int type;
-    private int gender;
-    private long expiredTime;
-    private String name;
-    private String nick;
-    private String portrait;
-    private String openId;
-    private String accessToken;
-    private String imToken;
-    private String address;
-    private String zipCode;
-    private String telephone;
+    private int type;   //0:自注册，1：微信，2：QQ
+    private int gender; //0：男，1：女，2:其它
+    private long expiredTime;   //过期日期
+    private String name;    //姓名，一般也做openid
+    private String nick;    //昵称
+    private String portrait;//头像
+    private String openId;  //开放平台的id
+    private String accessToken;//开放平台的token
+    private String imToken; //聊天token
+    private String address; //收货地址
+    private int zipCode; //邮编
+    private String telephone;//联系电话
+
+    public User() {
+    }
 
     public User(String name, String nick) {
         this.name = name;
@@ -120,12 +123,12 @@ public class User {
         this.address = address;
     }
 
-    public String getZipCode() {
+    public int getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
-        zipCode = zipCode;
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getTelephone() {
@@ -155,4 +158,6 @@ public class User {
     public void setPortrait(String portrait) {
         this.portrait = portrait;
     }
+
+
 }

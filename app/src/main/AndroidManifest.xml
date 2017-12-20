@@ -123,7 +123,8 @@
             android:name="UMENG_CHANNEL"
             android:value="官方" />
 
-        <activity android:name=".UI.CodeActivity"></activity>
+        <activity android:name=".UI.CodeActivity" />
+        <activity android:name=".UI.ExchangeActivity"></activity>
     </application>
 
 </manifest>

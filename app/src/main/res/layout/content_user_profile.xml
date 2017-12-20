@@ -46,7 +46,7 @@
         android:layout_height="3dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="@mipmap/bg-div"
+        android:background="@mipmap/bg_div"
         app:layout_constraintBottom_toBottomOf="@+id/circle_left"
         app:layout_constraintEnd_toStartOf="@+id/circle_right"
         app:layout_constraintStart_toEndOf="@+id/circle_left"
@@ -63,7 +63,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/cover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
@@ -71,10 +71,10 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:background="@mipmap/ic_launcher_round"
-        app:layout_constraintBottom_toBottomOf="@+id/bg_cover"
-        app:layout_constraintEnd_toEndOf="@+id/bg_cover"
-        app:layout_constraintStart_toStartOf="@+id/bg_cover"
-        app:layout_constraintTop_toTopOf="bg_cover" />
+        app:layout_constraintBottom_toBottomOf="@id/bg_cover"
+        app:layout_constraintEnd_toEndOf="@id/bg_cover"
+        app:layout_constraintStart_toStartOf="@id/bg_cover"
+        app:layout_constraintTop_toTopOf="@id/bg_cover" />
 
     <TextView
         android:id="@+id/textView"
@@ -85,7 +85,7 @@
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="@+id/bg"
         app:layout_constraintStart_toStartOf="@+id/bg"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/cover" />
 
     <View
         android:id="@+id/time"
@@ -171,5 +171,53 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.625" />
+
+    <Button
+        android:id="@+id/exchange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:text="兑换"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/bg"
+        app:layout_constraintEnd_toStartOf="@+id/recharge"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/circle_left"
+        app:layout_constraintStart_toStartOf="@+id/bg"
+        app:layout_constraintTop_toBottomOf="@+id/div" />
+
+    <Button
+        android:id="@+id/recharge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:text="充值"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/bg"
+        app:layout_constraintEnd_toEndOf="@+id/bg"
+        app:layout_constraintEnd_toStartOf="@+id/circle_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/exchange"
+        app:layout_constraintTop_toBottomOf="@+id/div" />
+
+    <TextView
+        android:id="@+id/div_1"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:gravity="center_vertical"
+        android:text="抓中记录"
+        android:textColor="@color/secondTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bg" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recordList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/div_1" />
 
 </android.support.constraint.ConstraintLayout>

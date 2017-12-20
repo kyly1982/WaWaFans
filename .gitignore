@@ -6,7 +6,9 @@
 /.idea/libraries
 .DS_Store
 /build
+/app/build
 /captures
 .externalNativeBuild
-/src/main/cpp
+/src/main/cpp/*.cpp
+/src/main/cpp/*.h
 *.apk
