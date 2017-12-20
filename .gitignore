@@ -9,3 +9,4 @@
 /captures
 .externalNativeBuild
 /src/main/cpp
+*.apk
