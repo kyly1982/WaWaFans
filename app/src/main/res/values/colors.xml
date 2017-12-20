@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#152433</color>
+    <color name="colorPrimaryDark">#152433</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="secondTextColor">#989fa7</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorError">#FF0000</color>
+    <color name="colorWarning">#FFFF00</color>
+    <color name="colorMessage">#1997EC</color>
+
+    <!--side_nav_bar-->
+    <color name="snb_bg">#172636</color>
+    <!--side_nav_bar_header-->
+    <color name="snbh_bg_start">#FC5379</color>
+    <color name="snbh_bg_end">#FD8171</color>
+    <color name="snbh_bg_center">#FD6B75</color>
+
+    <!--room_bg_orange-->
+    <color name="room_bg_orange_start">#FF5077</color>
+    <color name="room_bg_orange_end">#FF6A72</color>
+    <color name="room_bg_orange_center">#FF806D</color>
+
+    <!--room_bg_pink-->
+    <color name="room_bg_pink_start">#FF4779</color>
+    <color name="room_bg_pink_end">#FF5B9B</color>
+    <color name="room_bg_pink_center">#FF6CB9</color>
+
+    <!--redy-->
+    <color name="ready_bg">#172636</color>
+    <color name="bg_player">#293b48</color>
+
+    <!--mine-->
+    <color name="mine_bg_darkcircle">#152535</color>
+    <!--record-->
+    <color name="record_bg">#2C3A48</color>
+
+
+</resources>
