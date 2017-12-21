@@ -28,7 +28,7 @@ public class ReadyActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ready);
-        room = (Machine) getIntent().getSerializableExtra("room");
+        room = (Machine) getIntent().getExtras().getSerializable("room");
     }
 
     @Override
@@ -67,6 +67,7 @@ public class ReadyActivity extends BaseActivity implements View.OnClickListener 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.mipmap.ic_menu);
 
         videoView = findViewById(R.id.videoVeiw);
 

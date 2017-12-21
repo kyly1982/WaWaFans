@@ -3,15 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:background="@drawable/bg_records"
-    android:paddingLeft="25.5dp"
-    android:paddingRight="25.5dp">
+    android:layout_height="66dp"
+    android:background="@null">
+
+    <View
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_records" />
 
     <ImageView
         android:id="@+id/itemCover"
         android:layout_width="27dp"
         android:layout_height="27dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,8 +30,10 @@
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:alpha="0.7"
         android:text="TextView"
-        android:textColor="@color/secondTextColor"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/itemCover"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/itemCover" />

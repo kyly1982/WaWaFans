@@ -24,8 +24,12 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     private Context context;
 
     public void setData(ArrayList<Record> records, boolean isAppend) {
+        if (null == records) {
+            return;
+        }
         if (null == this.records) {
             this.records = new ArrayList<>(records.size());
+            this.records.addAll(records);
             notifyDataSetChanged();
         } else {
             if (isAppend) {

@@ -84,12 +84,18 @@ public class UserActivity extends BaseActivity {
         } else {
             if (null == adapter) {
                 adapter = new RecordAdapter();
-                adapter.setData(records, false);
+                recordList.setAdapter(adapter);
             }
+            adapter.setData(records, false);
         }
     }
 
     private void loadData() {
-
+        records = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            Record record = new Record(i, (i + 7) % 2, System.currentTimeMillis() - (60000 * i), "第" + i + "个物品", "http://www.qqzhi.com/uploadpic/2015-01-22/022222987.jpg");
+            records.add(record);
+        }
+        showData();
     }
 }

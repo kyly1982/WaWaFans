@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,7 +43,8 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
         if (null == recordList) {
             initView();
         }
-        showData();
+        loadData();
+//        showData();
     }
 
     @Override
@@ -64,6 +66,7 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.mipmap.ic_menu);
 
         cover = findViewById(R.id.cover);
         name = findViewById(R.id.name);
@@ -79,29 +82,42 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void showData() {
+        if (null == records) {
+            loadData();
+            return;
+        }
         if (null == adapter) {
             adapter = new RecordAdapter();
             recordList.setAdapter(adapter);
-        } else {
-            adapter.setData(records, false);
         }
+        adapter.setData(records, false);
 
         if (null == cover.getTag()) {
             User user = application.getUser();
-            Glide.with(this)
-                    .load(user.getPortrait())
-                    .into(cover);
-            name.setText(user.getNick());
-            cover.setTag(user);
+            if (null != user) {
+                Glide.with(this)
+                        .load(user.getPortrait())
+                        .into(cover);
+                name.setText(user.getNick());
+                cover.setTag(user);
+            }
         }
-
-        winCount.setText(bill.getWinCount() + "");
-        coin.setText(bill.getAvailable() + "");
+        if (null != bill) {
+            winCount.setText(bill.getWinCount() + "");
+            coin.setText(bill.getAvailable() + "");
+        }
     }
 
     private void loadData() {
         if (null == bill) {
             bill = new Bill(320, 150, 170, 0, 3, 3, 50, 6, 3, 3);
+            records = new ArrayList<>(10);
+            for (int i = 0; i < 10; i++) {
+                Record record = new Record(i, (i + 7) % 2, System.currentTimeMillis() - (60000 * i), "第" + i + "个物品", "http://www.qqzhi.com/uploadpic/2015-01-22/022222987.jpg");
+                records.add(record);
+            }
+
         }
+        showData();
     }
 }

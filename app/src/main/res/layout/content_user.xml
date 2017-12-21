@@ -64,8 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginStart="32dp"
+        android:alpha="0.7"
         android:text="抓中"
-        android:textColor="@color/secondTextColor"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
@@ -111,8 +112,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginTop="8dp"
+        android:alpha="0.7"
         android:text="余额"
-        android:textColor="@color/secondTextColor"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/coin"
         app:layout_constraintTop_toTopOf="@+id/textView5"

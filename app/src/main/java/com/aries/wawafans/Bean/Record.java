@@ -11,6 +11,14 @@ public class Record {
     private String itemName;
     private String itemCover;
 
+    public Record(int id, int itemId, long time, String itemName, String itemCover) {
+        this.id = id;
+        this.itemId = itemId;
+        this.time = time;
+        this.itemName = itemName;
+        this.itemCover = itemCover;
+    }
+
     public int getId() {
         return id;
     }
@@ -50,4 +58,5 @@ public class Record {
     public void setItemCover(String itemCover) {
         this.itemCover = itemCover;
     }
+
 }

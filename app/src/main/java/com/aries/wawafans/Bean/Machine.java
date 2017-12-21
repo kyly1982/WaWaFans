@@ -10,10 +10,10 @@ import java.io.Serializable;
 public class Machine implements Serializable {
     private int id;
     private int port;
-    private int key;
+    private int key = 9352;
     private short price;
     private short state;
-    private short time;
+    private short time = 20;
     private String name;
     private String desc;
     private String cover;

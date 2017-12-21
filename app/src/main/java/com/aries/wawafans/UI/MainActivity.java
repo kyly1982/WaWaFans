@@ -37,10 +37,17 @@ public class MainActivity extends BaseActivity
 
     private RoomAdapter adapter;
 
+    private final int REQUEST_LOGIN_SIDEMENU = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -80,10 +87,10 @@ public class MainActivity extends BaseActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_me) {
-            if (application.isLogin()) {
+            //if (application.isLogin()) {
                 Intent intent = new Intent(this, UserProfileActivity.class);
                 startActivity(intent);
-            }
+            //}
             return true;
         }
 
@@ -114,7 +121,12 @@ public class MainActivity extends BaseActivity
                 startActivity(intent);
                 break;
             case R.id.nav_exit:
-                MyApplication.instence.handleExie();
+                if (application.isLogin()) {
+                    application.handleExie();
+                } else {
+                    intent.setClass(this, LoginActivity.class);
+                    startActivityForResult(intent, REQUEST_LOGIN_SIDEMENU);
+                }
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -164,8 +176,6 @@ public class MainActivity extends BaseActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        toolbar.setNavigationIcon(R.mipmap.ic_menu);
-
         loginMenuItem = navigationView.getMenu().findItem(R.id.nav_exit);
         roomListView = findViewById(R.id.roomlist);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -174,19 +184,31 @@ public class MainActivity extends BaseActivity
 
 
     private void loadData() {
-        String watchVideo = "rtmp://12701.livepush.myqcloud.com/live/12701_c5e4ad7ebdf111e792905cb9018cf0d4?bizid=12701";
-        Machine one = new Machine(0, "第一个", "1111111", "192.168.0.1", 5999, (short) 5);
-        Machine two = new Machine(0, "第二个", "222222", "192.168.0.1", 6000, (short) 6);
-        Machine three = new Machine(0, "第三个", "33333", "192.168.0.1", 6001, (short) 7);
-        Machine four = new Machine(0, "第四个", "444444", "192.168.0.1", 6002, (short) 8);
-        Machine five = new Machine(0, "第五个", "55555", "192.168.0.1", 6003, (short) 9);
+        String watchVideo = "rtmp://12701.liveplay.myqcloud.com/live/12701_c5e4ad7ebdf111e792905cb9018cf0d4";
+        String realVideo = "rtmp://192.168.1.52/live";
+//        Machine one = new Machine(1, "第一个", "1111111", "192.168.1.51", 8888, (short) 5);
+//        Machine two = new Machine(2, "第二个", "222222", "192.168.1.51", 8888, (short) 6);
+//        Machine three = new Machine(3, "第三个", "33333", "192.168.1.52", 8888, (short) 7);
+//        Machine four = new Machine(4, "第四个", "444444", "192.168.1.53", 8888, (short) 8);
+//        Machine five = new Machine(5, "第五个", "55555", "192.168.1.51", 8888, (short) 9);
+        Machine one = new Machine(1, "第一个", "1111111", "118.113.203.168", 40000, (short) 5);
+        Machine two = new Machine(2, "第二个", "222222", "118.113.203.168", 40001, (short) 6);
+        Machine three = new Machine(3, "第三个", "33333", "118.113.203.168", 40002, (short) 7);
+        Machine four = new Machine(4, "第四个", "444444", "118.113.203.168", 40003, (short) 3);
+        Machine five = new Machine(5, "第五个", "55555", "118.113.203.168", 40003, (short) 2);
         one.setWatchVideo(watchVideo);
         two.setWatchVideo(watchVideo);
         three.setWatchVideo(watchVideo);
         four.setWatchVideo(watchVideo);
         five.setWatchVideo(watchVideo);
-        one.setState((short) 1);
-        two.setState((short) 2);
+        one.setRealTimeVideo(realVideo);
+        two.setRealTimeVideo(realVideo);
+        three.setRealTimeVideo(realVideo);
+        four.setRealTimeVideo(realVideo);
+        five.setRealTimeVideo(realVideo);
+        one.setState((short) 0);
+        two.setState((short) 1);
+        three.setState((short) 2);
         rooms = new ArrayList<>(5);
         rooms.add(one);
         rooms.add(two);
@@ -242,6 +264,7 @@ public class MainActivity extends BaseActivity
             case 2:
                 Intent intent1 = new Intent(this, ReadyActivity.class);
                 bundle.putSerializable("room", machine);
+                intent1.putExtras(bundle);
                 startActivity(intent1);
                 break;
         }

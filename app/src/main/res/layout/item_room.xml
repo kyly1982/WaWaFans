@@ -56,8 +56,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
+        android:alpha="0.7"
         android:text="房间子名"
-        android:textColor="@color/secondTextColor"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -66,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:alpha="0.7"
         android:text="20"
         android:textColor="@android:color/white"
         android:textStyle="bold"
@@ -98,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:alpha="0.7"
         android:text="空闲中"
         android:textColor="@android:color/white"
         android:textStyle="bold"

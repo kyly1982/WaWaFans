@@ -1,6 +1,8 @@
 package com.aries.wawafans.UI;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -18,9 +20,9 @@ import static com.tencent.rtmp.TXLiveConstants.RENDER_MODE_ADJUST_RESOLUTION;
 public class PlayActivity extends BaseActivity implements View.OnTouchListener {
 
 
-    public native int initConnection(String host, int port, int pwd);
+    public native int initConnection(int id, String host, int port, int pwd);
 
-    public native int sendActionCommand(int command);
+    public native int sendActionCommand(int userId, int command);
 
     static {
         System.loadLibrary("native-lib");
@@ -29,16 +31,20 @@ public class PlayActivity extends BaseActivity implements View.OnTouchListener {
 
     private TXLivePlayer liveplayer;
     private TXCloudVideoView videoView;
-    private TextView winCount;
+    private TextView tink;
 
     private Machine room;
+
+    private int time;
+    private boolean active = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-        room = (Machine) getIntent().getSerializableExtra("room");
-        //initConnection(room.getHost(), room.getPort(), room.getKey());//初始化连接
+        room = (Machine) getIntent().getExtras().getSerializable("room");
+        time = room.getTime();
+        initConnection(room.getId(), room.getHost(), room.getPort(), room.getKey());//初始化连接
     }
 
     @Override
@@ -46,6 +52,9 @@ public class PlayActivity extends BaseActivity implements View.OnTouchListener {
         super.onResume();
         if (null == videoView) {
             initView();
+        }
+        if (null != room) {
+            playVideo();
         }
     }
 
@@ -71,13 +80,41 @@ public class PlayActivity extends BaseActivity implements View.OnTouchListener {
         return false;
     }
 
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    handler.removeMessages(2);
+                    break;
+                case 1:
+                    handler.sendEmptyMessageDelayed(2, 1000);
+                    break;
+                case 2:
+                    time -= 1;
+                    tink.setText(time + "");
+                    if ((0 == time)) {
+                        sendCommand(Command.START_GRAB);
+                        active = false;
+                        getResult();
+                    } else {
+                        handler.sendEmptyMessageDelayed(2, 1000);
+                    }
+                    break;
+            }
+        }
+    };
+
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.mipmap.ic_menu);
 
         videoView = findViewById(R.id.videoVeiw);
-        winCount = findViewById(R.id.winCount);
+        tink = findViewById(R.id.roundTime);
+        tink.setText(room.getTime() + "");
         findViewById(R.id.left).setOnTouchListener(this);
         findViewById(R.id.right).setOnTouchListener(this);
         findViewById(R.id.front).setOnTouchListener(this);
@@ -91,34 +128,54 @@ public class PlayActivity extends BaseActivity implements View.OnTouchListener {
     }
 
     private void handleAction(View view, boolean isStop) {
-        if (isStop) {
-            sendCommand(Command.STOP_MOVE);
-        } else {
-            switch (view.getId()) {
-                case R.id.left:
-                    sendCommand(Command.MOVE_LEFT);
-                    break;
-                case R.id.right:
-                    sendCommand(Command.MOVE_RIGHT);
-                    break;
-                case R.id.front:
-                    sendCommand(Command.MOVE_FRONT);
-                    break;
-                case R.id.back:
-                    sendCommand(Command.MOVE_BACK);
-                    break;
+        if (active) {
+            if (isStop) {
+                sendCommand(Command.STOP_MOVE);
+            } else {
+                switch (view.getId()) {
+                    case R.id.left:
+                        sendCommand(Command.MOVE_LEFT);
+                        break;
+                    case R.id.right:
+                        sendCommand(Command.MOVE_RIGHT);
+                        break;
+                    case R.id.front:
+                        sendCommand(Command.MOVE_FRONT);
+                        break;
+                    case R.id.back:
+                        sendCommand(Command.MOVE_BACK);
+                        break;
+                    case R.id.grap:
+                        active = false;
+                        handler.sendEmptyMessage(0);
+                        sendCommand(Command.START_GRAB);
+                        break;
+                }
             }
         }
     }
 
     private void sendCommand(Command command) {
-        sendActionCommand(command.rawValue());
+        sendActionCommand(36, command.rawValue());
     }
 
     private void playVideo() {
-        String videoUrl = room.getHost();//处理路径
+        handler.sendEmptyMessage(1);
+        String videoUrl = room.getRealTimeVideo();//处理路径
         if (!TextUtils.isEmpty(videoUrl) && videoUrl.length() > 10) {
             liveplayer.startPlay(videoUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP_ACC);//低延迟使用PLAY_TYPE_LIVE_RTMP_ACC
         }
+    }
+
+    private void getResult() {
+
+    }
+
+    private void showWin() {
+
+    }
+
+    private void showFail() {
+
     }
 }

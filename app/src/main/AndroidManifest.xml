@@ -27,7 +27,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".UI.MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".UI.PlayActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -46,7 +46,7 @@
         </activity>
         <activity
             android:name=".UI.ReadyActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -55,7 +55,7 @@
         </activity>
         <activity
             android:name=".UI.UserActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name=".UI.RechargeActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.UserActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -72,7 +72,7 @@
         </activity>
         <activity
             android:name=".UI.LoginActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -80,7 +80,7 @@
         </activity>
         <activity
             android:name=".UI.UserProfileActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.PlayActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -89,7 +89,7 @@
         </activity>
         <activity
             android:name=".UI.InviteActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -98,7 +98,7 @@
         </activity>
         <activity
             android:name=".UI.FeedbackActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -107,7 +107,7 @@
         </activity>
         <activity
             android:name=".UI.SettingActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity"
             android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -124,7 +124,16 @@
             android:value="官方" />
 
         <activity android:name=".UI.CodeActivity" />
-        <activity android:name=".UI.ExchangeActivity"></activity>
+        <activity android:name=".UI.ExchangeActivity" />
+        <activity
+            android:name=".UI.RecordActivity"
+            android:label="@string/title_activity_record"
+            android:parentActivityName=".UI.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.aries.wawafans.UI.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
