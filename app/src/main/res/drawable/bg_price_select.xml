@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/pay_bg" />
     <stroke
         android:color="@color/stroke_color_payitem"
         android:width="2dp" />

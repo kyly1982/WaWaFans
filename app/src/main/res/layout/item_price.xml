@@ -6,14 +6,13 @@
     android:layout_height="64dp">
 
     <View
-        android:id="@+id/bg_pay"
+        android:id="@+id/bg_price"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_marginBottom="2dp"
         android:layout_marginEnd="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_circlerect_price"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,9 +25,9 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bg_pay"
-        app:layout_constraintStart_toStartOf="@+id/bg_pay"
-        app:layout_constraintTop_toTopOf="@+id/bg_pay"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_price"
+        app:layout_constraintStart_toStartOf="@+id/bg_price"
+        app:layout_constraintTop_toTopOf="@+id/bg_price"
         app:srcCompat="@mipmap/ic_star" />
 
     <TextView
@@ -52,7 +51,7 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/coin"
-        app:layout_constraintEnd_toEndOf="@+id/bg_pay"
+        app:layout_constraintEnd_toEndOf="@+id/bg_price"
         app:layout_constraintTop_toTopOf="@+id/coin" />
 
 </android.support.constraint.ConstraintLayout>

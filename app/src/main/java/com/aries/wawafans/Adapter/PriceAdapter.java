@@ -1,6 +1,7 @@
 package com.aries.wawafans.Adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,6 @@ import java.util.ArrayList;
 public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.ViewHolder> {
     private ArrayList<Price> prices;
     private int selectedIndex = -1;
-    private View selectedView = null;
-    private OnItemSelectedListener listener = null;
-
-    public interface OnItemSelectedListener {
-        void onItemSelected(Price price);
-    }
 
 
     public PriceAdapter(ArrayList<Price> prices) {
@@ -61,30 +56,24 @@ public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.ViewHolder> 
         holder.rmb.setText(price.getRmb() + "");
         holder.coin.setText(price.getCoin() + "");
         holder.icon.setBackgroundResource(R.mipmap.ic_star);
-//        if (selectedIndex == position){
-//            holder.itemView.setBackgroundResource(R.drawable.bg_price_select);
-//            selectedView = holder.itemView;
-//        }
+        if (position != selectedIndex) {
+            holder.item_bg.setBackgroundResource(R.drawable.bg_price_normal);
+            holder.icon.setBackgroundResource(R.mipmap.ic_star);
+        } else {
+            holder.item_bg.setBackgroundResource(R.drawable.bg_price_select);
+            holder.icon.setBackgroundResource(R.mipmap.ic_star);
+            selectedIndex = -1;
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null == selectedView || selectedView.getId() != v.getId()) {
-                    holder.itemView.setBackgroundResource(R.drawable.bg_price_select);
-                    holder.icon.setBackgroundResource(R.mipmap.ic_star);
-                    selectedView = v;
-                    selectedIndex = position;
-//                    if (null != listener){
-//                        listener.onItemSelected(null);
-//                    }
-                } else {
-                    selectedView.setBackgroundResource(R.drawable.bg_price_normal);
-                    selectedView = null;
+                if (selectedIndex == position) {
                     selectedIndex = -1;
-//                    if (null != listener){
-//                        listener.onItemSelected(price);
-//                    }
+                } else {
+                    selectedIndex = position;
                 }
+                notifyDataSetChanged();
             }
         });
     }
@@ -97,12 +86,14 @@ public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView coin, rmb;
         private ImageView icon;
+        private View item_bg;
 
         public ViewHolder(View itemView) {
             super(itemView);
             coin = itemView.findViewById(R.id.coin);
             rmb = itemView.findViewById(R.id.rmb);
             icon = itemView.findViewById(R.id.icon);
+            item_bg = itemView.findViewById(R.id.bg_price);
         }
     }
 

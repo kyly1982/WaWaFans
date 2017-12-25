@@ -58,13 +58,16 @@
         android:id="@+id/coin"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="50dp"
-        android:layout_height="22dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:background="@null"
+        android:gravity="bottom|center_horizontal"
         android:text="充值"
         android:textColor="@color/secondTextColor"
-        app:layout_constraintBottom_toBottomOf="@+id/start_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/start"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3" />
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <TextView
         android:id="@+id/stare"
@@ -72,16 +75,15 @@
         android:layout_height="wrap_content"
         android:text="120"
         android:textColor="@color/secondTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/coin"
+        app:layout_constraintBottom_toBottomOf="@+id/playCoun"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/playCoun" />
 
     <TextView
         android:id="@+id/playCoun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="65432"
         android:textColor="@color/secondTextColor"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
