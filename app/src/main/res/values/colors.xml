@@ -9,6 +9,8 @@
     <color name="colorError">#FF0000</color>
     <color name="colorWarning">#FFFF00</color>
     <color name="colorMessage">#1997EC</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBlack">#000000</color>
 
     <!--side_nav_bar-->
     <color name="snb_bg">#172636</color>
@@ -35,6 +37,7 @@
     <color name="mine_bg_darkcircle">#152535</color>
     <!--record-->
     <color name="record_bg">#2C3A48</color>
-
-
+    <!--pay-->
+    <color name="pay_bg">#2C3A48</color>
+    <color name="stroke_color_payitem">#FC5D77</color>
 </resources>

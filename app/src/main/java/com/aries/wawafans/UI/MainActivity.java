@@ -191,11 +191,11 @@ public class MainActivity extends BaseActivity
 //        Machine three = new Machine(3, "第三个", "33333", "192.168.1.52", 8888, (short) 7);
 //        Machine four = new Machine(4, "第四个", "444444", "192.168.1.53", 8888, (short) 8);
 //        Machine five = new Machine(5, "第五个", "55555", "192.168.1.51", 8888, (short) 9);
-        Machine one = new Machine(1, "第一个", "1111111", "118.113.203.168", 40000, (short) 5);
-        Machine two = new Machine(2, "第二个", "222222", "118.113.203.168", 40001, (short) 6);
-        Machine three = new Machine(3, "第三个", "33333", "118.113.203.168", 40002, (short) 7);
-        Machine four = new Machine(4, "第四个", "444444", "118.113.203.168", 40003, (short) 3);
-        Machine five = new Machine(5, "第五个", "55555", "118.113.203.168", 40003, (short) 2);
+        Machine one = new Machine(1, "第一个", "1111111", "kyly1982.vicp.io", 40000, (short) 5);
+        Machine two = new Machine(2, "第二个", "222222", "kyly1982.vicp.io", 40001, (short) 6);
+        Machine three = new Machine(3, "第三个", "33333", "kyly1982.vicp.io", 40002, (short) 7);
+        Machine four = new Machine(4, "第四个", "444444", "kyly1982.vicp.io", 40003, (short) 3);
+        Machine five = new Machine(5, "第五个", "55555", "kyly1982.vicp.io", 40003, (short) 2);
         one.setWatchVideo(watchVideo);
         two.setWatchVideo(watchVideo);
         three.setWatchVideo(watchVideo);
@@ -206,9 +206,9 @@ public class MainActivity extends BaseActivity
         three.setRealTimeVideo(realVideo);
         four.setRealTimeVideo(realVideo);
         five.setRealTimeVideo(realVideo);
-        one.setState((short) 0);
+        one.setState((short) 2);
         two.setState((short) 1);
-        three.setState((short) 2);
+        three.setState((short) 1);
         rooms = new ArrayList<>(5);
         rooms.add(one);
         rooms.add(two);
