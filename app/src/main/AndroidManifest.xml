@@ -134,6 +134,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.aries.wawafans.UI.MainActivity" />
         </activity>
+
+        <!-- 注册支付宝支付 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <!-- 注册微信支付 WXPayEntryActivity -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent"
+            android:launchMode="singleTop" >
+        </activity>
+
     </application>
 
 </manifest>

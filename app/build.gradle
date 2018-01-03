@@ -51,4 +51,7 @@ dependencies {
     compile 'com.google.code.gson:gson:+'
     //compile 'com.zhy:okhttputils:+'
     compile 'com.github.bumptech.glide:glide:+'
+
+    compile files('libs/alipaySdk-20170922.jar')
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }
