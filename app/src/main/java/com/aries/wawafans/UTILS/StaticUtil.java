@@ -8,7 +8,7 @@ import com.tencent.tauth.Tencent;
  */
 
 public class StaticUtil {
-        public final static String WX_Appid = "123";
+        public final static String WX_Appid = "123456";
         public static IWXAPI wx_api; //全局的微信api对象
         public final static String QQ_Appid = "123";
         public static Tencent tencent;//全局的QQ对象
